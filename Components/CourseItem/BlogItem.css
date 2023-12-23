@@ -1,0 +1,32 @@
+.blog-item{
+    border-radius: 30px;
+}
+.blog-item-image{
+    max-width: 269px;
+    max-height: 237px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.blog-item-image{
+    object-fit: cover;
+    width: 100%;
+    border-radius: 20px;
+}
+.blog-item-desc-title{
+    font-family: "bold";
+    font-size: 20px;
+}
+.blog-item-desc-desc{
+    font-family: "regular";
+    font-size: 14px;
+}
+.blog-item-footer-person p{
+    font-family: "semi-bold";
+    font-size: 14px;
+}
+.blog-item-footer-button p{
+    font-family: "bold";
+    font-size: 12px;
+    padding: 10px 11px;
+    border-radius: 28px;
+}

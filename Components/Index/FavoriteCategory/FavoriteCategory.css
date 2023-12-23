@@ -1,0 +1,15 @@
+.favorite-category-wrapper{
+    gap: 24px;
+}
+.favorite-category-item{
+    border-radius: 20px;
+}
+.favorite-category-header{
+    font-family: "ul-bold";
+    font-size: 36px;
+}
+.favorite-category-item-desc p{
+    font-family: "semi-bold";
+    font-size: 12px;
+    margin-top: 10px;
+}

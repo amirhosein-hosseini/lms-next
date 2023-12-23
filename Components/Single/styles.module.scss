@@ -1,0 +1,172 @@
+// start single page styles
+.singleWrapper{
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    gap: 35px;
+}
+// end single page styles
+
+
+// start single page header styles
+.singlepage{
+    &__header{
+        &__top{
+            background: white;
+            border-radius: 30px;
+            text-align: right;
+            direction: rtl;
+            &__title{
+                border-bottom: 1px solid #B5BADC;
+                p{
+                    font-family: "bold";
+                    font-size: 32px;
+                    color: #FF8429;
+                }
+            }
+            &__desc{
+                gap: 8px;
+            }
+        }
+        &__nav{
+            direction: rtl;
+            gap: 18px;
+            border-radius: 30px 30px 0px 0px;
+            border-bottom: 1px solid #B5BADC;
+            .item{
+                direction: ltr;
+                text-align: right;
+                gap: 8px;
+                p{
+                    font-family: "ye-semibold";
+                    font-size: 24px;
+                    color: #6D7083;
+                }
+            }
+        }
+    }
+}
+// end single page header styles
+
+
+
+
+
+
+// start single signbar styles
+.Signbar{
+    background: white;
+    border-radius: 30px;
+    padding: 38px 34px;
+    height: fit-content;
+    &__price{
+        .RealPrice{
+            font-family: "ye-bold";
+            font-size: 36px;
+            color: black;
+            .money{
+                font-family: "ye-semibold";
+                font-size: 16px;
+            }
+        }
+        .discount{
+            font-family: "ye-semibold";
+            font-size: 13px;
+            color: gray;
+            text-decoration: line-through;
+            direction: rtl;
+        }
+    }
+    &__buttons{
+        margin-top: 8px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #D3D8F6;
+        button{
+            width: 100%;
+        }
+    }
+    &__desc{
+        ul{
+            padding: 32px 0px;
+            direction: rtl;  
+            border-bottom: 1px solid #D3D8F6;
+            li{
+                .item{
+                    gap: 10px;
+                    img{
+                        width: 16px;
+                        height: 16px;
+                    }
+                    p{
+                        font-family: "ye-semibold";
+                        font-size: 14px;
+                        color: rgb(30, 35, 54 , 90%);
+                    }
+                }
+            }      
+        }
+    }
+    &__teacher{
+        padding: 32px 0px;
+        direction: rtl;
+        gap: 10px;
+        .title{
+            font-family: "ye-bold";
+            font-size: 24px;
+            color: black;
+        }
+        .item{
+            gap: 14px;
+            .title{
+                font-size: 18px;
+            }
+            .desc{
+                font-family: "ye-semibold";
+                font-size: 16px;
+                color: rgb(0, 0, 0, 70%);
+            }
+        }
+    }
+    &__resume{
+        direction: rtl;
+        .stars{
+            max-width: 95px;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+                width: 100%;
+            }
+        }
+        .button{
+            button{
+                font-family: "bold";
+                font-size: 18px;
+                text-decoration: underline;
+                color: #20233B;
+            }
+        }
+    }
+}
+// end single signbar styles
+
+
+
+
+
+// start single desc styles
+.SingleDesc{
+    background: white;
+    margin-top: -20px;
+    &__image{
+        margin-top: 20px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 20px;
+        img{
+            object-fit: cover;
+            width: 100%;
+            border-radius: 20px;
+        }
+    }
+}
+// end single desc styles
