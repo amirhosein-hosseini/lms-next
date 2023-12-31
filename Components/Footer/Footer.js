@@ -1,5 +1,4 @@
 'use client'
-import React from "react";
 import styles from "./styles.module.scss";
 import footerlogo from "../../Public/Images/footerlogo.png";
 import instagram from "../../Public/Images/instagram.png";
@@ -9,7 +8,6 @@ import Image from 'next/image';
 const Footer = () => {
     return(
         <div className={styles.footer + " mt-20 pt-12 pb-12"}>
-            <div className={styles.footer__container}>
                 <div className={styles.footer__wrapper + " flex flex-row-reverse justify-between text-right"}>
                     <div className={styles.footer__about + " flex-col"}>
                         <Image className="ml-auto mb-6" src={footerlogo} alt="logo" />
@@ -80,7 +78,6 @@ const Footer = () => {
                         </form>
                     </div>
                 </div>
-            </div>
         </div>
     )
 }

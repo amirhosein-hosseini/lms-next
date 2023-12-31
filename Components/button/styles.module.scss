@@ -6,6 +6,10 @@
     font-size: 16px;
     color: white;
     width: 100%;
+    @media only screen and (max-width:768px){
+        padding: 7px 0px;
+        font-size: 14px;
+    }
 }
 .outlinebutton{
     background: transparent;
@@ -16,6 +20,10 @@
     color: #202635;
     border: 1px solid #202635;
     width: 100%;
+    @media only screen and (max-width:768px){
+        padding: 7px 0px;
+        font-size: 14px;
+    }
 }
 .purplebutton{
     background: #5662AC;
@@ -24,6 +32,10 @@
     color: white;
     padding: 10px 0px;
     border-radius: 8px;
+    @media only screen and (max-width:768px){
+        padding: 7px 0px;
+        font-size: 14px;
+    }
 }
 .tag{
     padding: 7px 9px;
@@ -32,4 +44,8 @@
     font-family: "ye-bold";
     font-size: 14px;
     color: white;
+    @media only screen and (max-width:768px){
+        padding: 7px 0px;
+        font-size: 14px;
+    }
 }

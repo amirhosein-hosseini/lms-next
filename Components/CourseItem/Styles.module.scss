@@ -1,0 +1,80 @@
+.blogitem{
+    border-radius: 30px;
+    &__image{
+        width: 100%;
+        overflow: hidden;
+        border-radius: 20px;
+        img{
+            object-fit: cover;
+            width: 100%;
+            border-radius: 20px;
+        }
+    }
+    &__desc{
+        .title{
+            font-family: "ye-bold";
+            font-size: 20px;
+        }
+        .desc{
+            font-family: "ye-regular";
+            font-size: 14px;
+        }
+    }
+    &__footer{
+        .person{
+            p{
+                font-family: "ye-semibold";
+                font-size: 14px;
+            }
+        }
+        .button{
+            font-family: "ye-bold";
+            font-size: 12px;
+            padding: 10px 11px;
+            border-radius: 28px;
+        }
+    }
+}
+.slideritem{
+    padding: 12px;
+    border-radius: 20px;
+    &__image{
+        max-width: 100%;
+        overflow: hidden;
+        img{
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+    &__desc{
+        .title{
+            font-family: "bold";
+            font-size: 16px;
+            direction: rtl;
+        }
+        .items{
+            border-bottom: 1px solid #F2F4FF;
+            .item{
+                p{
+                    font-family: "semi-bold";
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    &__footer{
+        .button{
+            p{
+                padding: 6px 20px;
+                border-radius: 14px;
+                font-family: "bold";
+                font-size: 16px;
+            }
+        }
+        .price{
+            direction: rtl;
+            font-size: 20px;
+            font-family: "bold";
+        }
+    }
+}

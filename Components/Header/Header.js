@@ -1,4 +1,4 @@
-
+"use clinet"
 import styles from "./styles.module.scss";
 import Top from "./top";
 

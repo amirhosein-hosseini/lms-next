@@ -1,5 +1,4 @@
 'use client'
-import React from "react";
 import styles from "./styles.module.scss";
 import cartimage from "../../public/Images/cartitemimage.png"
 import deleteimage from "../../public/Images/delete.png"

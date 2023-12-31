@@ -1,17 +1,16 @@
-import React from "react";
-import "./FavoriteTeachers.css";
 import Slider5 from "../Slider/slider5";
 import FavoriteTeacherItem from "./FavoriteTeacherItem/FavoriteTeacherItem";
+import styles from "./styles.module.scss";
 
 const FavoriteTeachers = () => {
     return(
-        <div className="favorite-teachers-wrapper">
-            <div className="favorite-teachers-header mb-8">
+        <div className={styles.wrapper}>
+            <div className={styles.wrapper__header + " mb-8"}>
                 <p className="text-center text-gray-800">
                     محبوب ترین اساتید   
                 </p>
             </div>
-            <div className="container favorite-teachers-items">
+            <div className={styles.wrapper__items}>
                 <Slider5>
                     <FavoriteTeacherItem />
                     <FavoriteTeacherItem />

@@ -1,4 +1,4 @@
-import React from "react";
+
 import HomeHero from "@/Components/Index/HomeHero/HomeHero";
 import HomeSlider from "@/Components/Index/HomeSlider/HomeSlider";
 import FavoriteCategory from "@/Components/Index/FavoriteCategory/FavoriteCategory";

@@ -20,18 +20,27 @@
                 font-family: "ye-bold";
                 font-size: 36px;
                 color: #080B0A;
+                @media only screen and (max-width:768px){
+                    font-size: 25px;
+                }
             }
             .desc{
                 font-family: "ye-semibold";
                 font-size: 16px;
                 color: #080B0A;
                 direction: rtl;
+                @media only screen and (max-width:768px){
+                    font-size: 12px;
+                }
             }
         }
         &__form{
             padding: 30px;
             border-radius: 24px;
             border: 1px solid #EBECF1;
+            @media only screen and (max-width:768px){
+                border: none;
+            }
             .formgroup{
                 display: flex;
                 flex-direction: column;

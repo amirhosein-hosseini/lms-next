@@ -1,5 +1,4 @@
 'use client'
-import React from "react";
 import styles from "./styles.module.scss";
 import search from "../../public/Images/search.png";
 import BlogItem from "../CourseItem/BlogItem";

@@ -1,7 +1,8 @@
+'use client'
 import { PurpleButton } from "../../Components/button/Button";
 import styles from "./styles.module.scss";
 import user from "../../Public/Images/sign-user.png";
-'use client'
+
 import video from "../../Public/Images/sign-video.png";
 import clock from "../../Public/Images/sign-clock.png";
 import grade from "../../Public/Images/sign-grade.png";

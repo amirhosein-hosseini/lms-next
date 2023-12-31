@@ -1,5 +1,4 @@
 import AboutPage from "@/Components/About/AboutPage";
-import React from "react";
 import background from "../public/Images/background.png"
 
 const About = () => {

@@ -1,5 +1,4 @@
 'use client'
-import React from "react";
 import styles from "./styles.module.scss";
 import CourseItem from "../CourseItem/CourseItem";
 import CourseFilter from "./CourseFilter";

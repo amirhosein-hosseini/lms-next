@@ -1,6 +1,5 @@
 
 'use client'
-import React from "react";
 import "./BlogSlider.css";
 import BlogItem from "@/Components/CourseItem/BlogItem";
 import Slideri from "../Slider/Slider";

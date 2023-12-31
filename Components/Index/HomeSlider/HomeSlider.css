@@ -23,3 +23,12 @@
     border-radius: 55px;
     padding: 14px 20px;
 }
+@media only screen and (max-width:768px){
+    .home-slider-title{
+        font-size: 25px !important;
+    }
+    .home-slider-button{
+        font-size: 14px !important;
+        padding: 8px 12px !important;
+    }
+}

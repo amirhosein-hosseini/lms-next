@@ -3,10 +3,16 @@
     width: 90%;
     margin: 0 auto;
     gap: 35px;
+    @media only screen and (max-width:768px){
+        flex-direction: column-reverse;     
+    }
     &__wrapper{
         grid-template-columns: repeat(3,minmax(0,1fr));
         gap: 30px;
         flex: 7;
+        @media only screen and (max-width:768px){
+            grid-template-columns: repeat(1,minmax(0,1fr));       
+        }
     }
 }
 .courseFilter{

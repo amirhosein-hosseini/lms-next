@@ -5,10 +5,16 @@
     margin-top: 32px;
     display: flex;
     gap: 30px;
+    @media only screen and (max-width:768px){
+        flex-direction: column-reverse;       
+    }
     &__wrapper{
         display: grid;
         grid-template-columns: repeat(3,minmax(0,1fr));
         gap: 20px;
+        @media only screen and (max-width:768px){
+            grid-template-columns: repeat(1,minmax(0,1fr));      
+        }
     }
     &__filter{
         display: flex;
