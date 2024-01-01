@@ -1,15 +1,16 @@
 'use client'
-
 import "./HomeSlider.css";
 import Slideri from "../Slider/Slider";
 import CourseItem from "@/Components/CourseItem/CourseItem";
 
-const HomeSlider = () => {
+const HomeSlider = ({data , title}) => {
+
+
     return(
         <div className="container home-slider-wrapper">
             <div className="home-slider-header flex justify-between">
                 <p className="home-slider-title">
-                    جدید ترین دوره ها
+                    {title}
                 </p>
                 <p className="home-slider-button">
                     مشاهده همه
@@ -17,12 +18,24 @@ const HomeSlider = () => {
             </div>
             <div className="home-slider-items">
                 <Slideri>
-                    <CourseItem />
-                    <CourseItem />
-                    <CourseItem />
-                    <CourseItem />
-                    <CourseItem />
-                    <CourseItem />
+                    {data?.map((item) =>(
+                       <CourseItem
+                            categories={item.categories}
+                            discount_amount={item.discount_amount}
+                            duration={item.duration}
+                            id={item.id}
+                            image={item.image}
+                            order={item.order}
+                            price={item.price}
+                            price_string={item.price_string}
+                            price_with_discount={item.price_with_discount}
+                            slug={item.slug}
+                            start_date={item.start_date}
+                            status={item.status}
+                            teacher={item.teacher}
+                            title={item.title}    
+                        /> 
+                    ))}
                 </Slideri>
             </div>
         </div>
