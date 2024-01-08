@@ -10,6 +10,9 @@
         }
     }
     &__items{
+        display: grid;
+        grid-template-columns: repeat(6,minmax(0,1fr));
+        gap: 15px;
         gap: 24px;
         @media only screen and (max-width:768px){
             display: grid;
@@ -17,6 +20,12 @@
         }
         .item{
             border-radius: 20px;
+            &__image{
+                img{
+                    width: 64px;
+                    height: 64px;
+                }
+            }
             &__desc{
                 p{
                     font-family: "semi-bold";

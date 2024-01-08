@@ -24,7 +24,7 @@ const CourseItem = ({categories , discount_amount , duration , id , image, order
             <div className={styles.slideritem__footer}>
                 <div className={styles.items + " flex justify-between items-center flex-row-reverse pb-4"}>
                     <div className={styles.item + " flex items-center flex-row-reverse"}>
-                        {teacher.avatar ? <img className={styles.teacherimage} src={teacher?.avatar} alt="icon" /> : ""}
+                        {teacher?.avatar ? <img className={styles.teacherimage} src={teacher?.avatar} alt="icon" /> : ""}
                         {/* <img src={teacher?.avatar} alt="icon" /> */}
                         <p className="mr-1">
                             {teacher?.full_name}

@@ -44,3 +44,48 @@ export const getAllDiscountCourses = async () => {
     throw new Error(error.message);
   }
 };
+
+
+export const getAllFavoriteCategories = async () => {
+  try {
+    const response = await axios.get(url + prefix + 'trend-categories',{
+      headers:{
+        "accept" : "application/json",
+        "x-api-key" : apiKey,
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+
+export const getAllIndexBlogs = async () => {
+  try {
+    const response = await axios.get(url + prefix + 'blogs?limit=5',{
+      headers:{
+        "accept" : "application/json",
+        "x-api-key" : apiKey,
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+
+export const getAllFavoriteTeachers = async () => {
+  try {
+    const response = await axios.get(url + prefix + 'providers/instructors?offset&limit=8&categories&sort&available_for_meetings&free_meetings&search&organization',{
+      headers:{
+        "accept" : "application/json",
+        "x-api-key" : apiKey,
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};

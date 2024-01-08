@@ -7,13 +7,17 @@ import FavoriteTeachers from "@/Components/Index/FavoriteTechers/FavoriteTeacher
 import BlogSlider from "@/Components/Index/HomeSlider/BlogSlider";
 import Achievement from "@/Components/Index/Achievement/Achievement";
 import { useEffect, useState } from "react";
-import { getAllBestSellers, getAllDiscountCourses, getAllNewestCourses } from "@/api/index";
+import { getAllBestSellers, getAllDiscountCourses, getAllFavoriteCategories, getAllFavoriteTeachers, getAllIndexBlogs, getAllNewestCourses } from "@/api/index";
 
 const HomePage = () => {
 
     const [newCourses , setNewCourses] = useState(null);
     const [bestSellers , setBestSellers] = useState(null);
     const [discountCourses , setDiscountCourses] = useState(null);
+    const [indexBlogs , setIndexBlogs] = useState(null);
+    const [favoriteTeachers , setFavoriteTeachers] = useState(null);
+
+
 
     // get all new courses 
     useEffect(() => {
@@ -57,7 +61,36 @@ const HomePage = () => {
     }, []);
 
 
-    console.log(discountCourses)
+    // get all index blogs
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const data = await getAllIndexBlogs();
+          setIndexBlogs(data.data.blogs);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+      fetchData();
+    }, []);
+
+
+    // get all favorite teachers
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const data = await getAllFavoriteTeachers();
+          setFavoriteTeachers(data.data.users);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+      fetchData();
+    }, []);
+
+
+    console.log(favoriteTeachers)
+
 
     return(
         <div className="home">
@@ -68,8 +101,8 @@ const HomePage = () => {
             {bestSellers ? <HomeSlider data={bestSellers} title={"پر فروش ترین ها"} /> : ""}
             <BecomTeacher />
             {discountCourses ? <HomeSlider data={discountCourses} title={"تخفیف دار ها"} /> : ""}
-            <FavoriteTeachers />
-            <BlogSlider />
+            {favoriteTeachers ? <FavoriteTeachers data={favoriteTeachers} /> : ""}
+            {indexBlogs ? <BlogSlider data={indexBlogs} /> : ""}
         </div>
     )
 }
