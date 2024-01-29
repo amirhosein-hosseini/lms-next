@@ -7,8 +7,29 @@ import message from "../../Public/Images/message.png";
 import { Tag } from "../../Components/button/Button";
 import SignBar from "../../Components/Single/Signbar";
 import Image from 'next/image';
+import { getShowCourse } from "@/api/course/ShowCourse";
+import { useEffect, useState } from "react";
 
-const SinglePage = () => {
+const SinglePage = ({slug}) => {
+
+  const [courseData , setCourseData] = useState(null);
+
+
+
+  // get all favorite teachers
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getShowCourse(slug[0]);
+        setCourseData(data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+
   return (
     <div className={styles.singleWrapper + " flex flex-row-reverse"}>
       <div className={styles.singlepage + " flex flex-col"}>
@@ -24,17 +45,17 @@ const SinglePage = () => {
                 styles.singlepage__header__top__title + " pb-12 pt-3 pb-3"
               }
             >
-              <p>دوره جامع آموزش Laravel</p>
+              <p>{courseData?.title}</p>
             </div>
             <div
               className={
                 styles.singlepage__header__top__desc +
-                " flex items-center pt-3 pb-3"
+                " items-center pt-3 pb-3"
               }
             >
-              <Tag>برنامه نویسی</Tag>
-              <Tag>برنامه نویسی</Tag>
-              <Tag>برنامه نویسی</Tag>
+              {courseData?.categories?.map((item) => (
+                <Tag>{item?.title}</Tag>
+              ))}
             </div>
           </div>
           <div
@@ -57,9 +78,9 @@ const SinglePage = () => {
             </div>
           </div>
         </div>
-        <SingleDesc />
+        <SingleDesc data={courseData} />
       </div>
-      <SignBar />
+      <SignBar data={courseData} />
     </div>
   );
 };

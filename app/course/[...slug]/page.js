@@ -1,8 +1,9 @@
 import SinglePage from "@/Components/Single/SinglePage";
 
-const Single = () => {
+const Single = ({params}) => {
+
     return(
-        <SinglePage />
+        <SinglePage slug={params.slug} />
     )
 }
 

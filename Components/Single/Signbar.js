@@ -13,18 +13,23 @@ import stars from "../../Public/Images/stars.png";
 import { Link } from "react-router-dom";
 import Image from 'next/image';
 
-const SignBar = () => {
+const SignBar = ({data}) => {
   return (
     <div className={styles.Signbar + " flex flex-col"}>
       <div className={styles.Signbar__price + " text-right"}>
         <div className={styles.price + " flex flex-col"}>
-          <p className={styles.RealPrice}>
-            قیمت:<span>۳۴۹,۵۰۰</span>
-            <span className={styles.money}>تومان</span>
-          </p>
-          <p className={styles.discount}>
-            <span>۶۹۹,۰۰۰</span>تومان
-          </p>
+          {data?.price ? 
+            <p className={styles.RealPrice}>
+              قیمت:<span>{data?.price_string}</span>
+            </p>
+            : <p className={styles.RealPrice}>رایگان</p>
+        }
+          {data?.price_with_discount !== data?.price ?  
+            <p className={styles.discount}>
+              <span>{data?.price_with_discount}</span>تومان
+            </p>
+            : ""
+          }
         </div>
       </div>
       <div
@@ -40,7 +45,7 @@ const SignBar = () => {
             <div className={styles.item + " flex text-right items-center"}>
               <Image src={user} alt="icon" />
               <p className={styles.item__desc + " text-right"}>
-                مدرس دوره : <span>حسن خسروجردی</span>
+                مدرس دوره : <span>{data?.teacher?.full_name}</span>
               </p>
             </div>
           </li>
@@ -51,12 +56,14 @@ const SignBar = () => {
           <p>درباره مدرس دوره</p>
         </div>
         <div className={styles.item + " flex items-center"}>
-          <div className={styles.item__image}>
-            <Image src={teacher} alt="image" />
-          </div>
+          {data?.teacher?.avatar && 
+            <div className={styles.item__image}>
+              <img src={data?.teacher?.avatar} alt="image" />
+            </div>
+          }
           <div className={styles.item__desc + " flex flex-col"}>
-            <p className={styles.title}>فرزاد معصومی</p>
-            <p className={styles.desc}>برنامه نویس</p>
+            <p className={styles.title}>{data?.teacher?.full_name}</p>
+            <p className={styles.desc}>{data?.teacher?.bio}</p>
           </div>
         </div>
       </div>

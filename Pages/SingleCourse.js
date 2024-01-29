@@ -1,6 +1,6 @@
 import SinglePage from "@/Components/Single/SinglePage";
 
-const Single = () => {
+const SingleCourse = () => {
     return(
         <SinglePage />
     )

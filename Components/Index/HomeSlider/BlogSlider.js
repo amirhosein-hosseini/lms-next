@@ -1,8 +1,8 @@
 
 'use client'
 import "./BlogSlider.css";
-import BlogItem from "@/Components/CourseItem/BlogItem";
 import Slideri from "../Slider/Slider";
+import BlogItem from "@/Components/Blog/BlogItem";
 
 const BlogSlider = ({data}) =>{
 

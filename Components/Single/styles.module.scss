@@ -10,6 +10,7 @@
 
 // start single page header styles
 .singlepage{
+    flex: 3;
     &__header{
         &__top{
             background: white;
@@ -25,6 +26,8 @@
                 }
             }
             &__desc{
+                display: grid;
+                grid-template-columns: repeat(4,minmax(0,1fr));
                 gap: 8px;
             }
         }
@@ -55,6 +58,7 @@
 
 // start single signbar styles
 .Signbar{
+    flex: 1;
     background: white;
     border-radius: 30px;
     padding: 38px 34px;
@@ -62,7 +66,7 @@
     &__price{
         .RealPrice{
             font-family: "ye-bold";
-            font-size: 36px;
+            font-size: 25px;
             color: black;
             .money{
                 font-family: "ye-semibold";
@@ -117,6 +121,16 @@
         }
         .item{
             gap: 14px;
+            &__image{
+                width: 58px;
+                height: 58px;
+                border-radius: 50%;
+                overflow: hidden;
+                img{
+                    object-fit: cover;
+                    width: 100%;
+                }
+            }
             .title{
                 font-size: 18px;
             }
@@ -157,6 +171,7 @@
 .SingleDesc{
     background: white;
     margin-top: -20px;
+    border-radius: 0px 0px 30px 30px;
     &__image{
         margin-top: 20px;
         width: 100%;
@@ -166,6 +181,119 @@
             object-fit: cover;
             width: 100%;
             border-radius: 20px;
+        }
+    }
+    &__desc{
+        padding: 32px;
+        border: 1px solid #DDDFEC;
+        border-radius: 25px;
+        margin-top: 30px;
+        .title{
+            font-family: "ye-bold";
+            font-size: 24px;
+            color: #1A2133;
+            text-align: right;
+            direction: rtl;
+        }
+        .desc{
+            font-family: "ye-regular";
+            font-size: 20px;
+            color: #333333;
+            text-align: right;
+            direction: rtl;
+        }
+    }
+    &__benefit{
+        padding: 32px;
+        border: 1px solid #DDDFEC;
+        border-radius: 25px;
+        margin-top: 30px;
+        .title{
+            font-family: "ye-bold";
+            font-size: 24px;
+            color: #1A2133;
+            text-align: right;
+            direction: rtl;
+        }
+        ul{
+            list-style-type: disc;
+            margin-right: 25px;
+            li{
+                font-family: "ye-regular";
+                font-size: 20px;
+                color: #333333;
+                text-align: right;
+                direction: rtl;
+            }
+        }
+    }
+    &__video{
+        padding: 32px;
+        border: 1px solid #DDDFEC;
+        border-radius: 25px;
+        margin-top: 30px;
+        .title{
+            font-family: "ye-bold";
+            font-size: 24px;
+            color: #1A2133;
+            text-align: right;
+            direction: rtl;
+            margin-bottom: 20px;
+        }
+        .videoWrapper{
+            max-width: 705px;
+            margin-left: auto;
+            border-radius: 20px;
+            overflow: hidden;
+            video{
+                object-fit: cover;
+                width: 100%;
+                border-radius: 20px;
+            }
+        }
+    }
+    &__items{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .title{
+            font-family: "ye-bold";
+            font-size: 24px;
+            color: #1A2133;
+            text-align: right;
+            direction: rtl;
+            margin-bottom: 20px;
+        }
+        .singleDescItem{
+            padding: 25px;
+            border: 1px solid #DDDFEC;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            &__header{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                direction: rtl;
+                p{
+                    font-family: "ye-bold";
+                    font-size: 24px;
+                    color: black;
+                }
+            }
+            &__items{
+                .item{
+                    p{
+                        font-family: "ye-semibold";
+                        font-size: 14px;
+                        color: #696969;
+                        text-align: right;
+                        direction: rtl;
+                    }
+                }
+            }
         }
     }
 }

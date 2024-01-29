@@ -4,6 +4,7 @@ import logo from "../../Public/Images/logo.png";
 import basket from "../../Public/Images/basket.png";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const Top = () => {
 
@@ -67,7 +68,10 @@ const Top = () => {
             </svg>
           </div>
           <li>
-            <a href="/production">صفحه اصلی</a>
+            <Link href="/">صفحه اصلی</Link>
+          </li>
+          <li>
+            <Link href="/course">دوره ها</Link>
           </li>
           <li
            className={styles.top__list__category}
@@ -168,13 +172,13 @@ const Top = () => {
               </div>
             </li>
           <li>
-            <a href="/production">وبلاگ</a>
+            <Link href="/blog">وبلاگ</Link>
           </li>
           <li>
-            <a href="/production">تماس با ما</a>
+            <Link href="/contact">تماس با ما</Link>
           </li>
           <li>
-            <a href="/production">درباره ما</a>
+            <Link href="/about">درباره ما</Link>
           </li>
         </ul>
         <div className={styles.top__sign}>

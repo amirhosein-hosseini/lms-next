@@ -5,6 +5,7 @@ import person from "../../public/Images/person.png";
 import star from "../../public/Images/star.png";
 import Image from 'next/image';
 import styles from "./Styles.module.scss";
+import Link from "next/link";
 
 const CourseItem = ({categories , discount_amount , duration , id , image, order , price , price_string , price_with_discount , slug , start_date , status , teacher , title}) => {
     
@@ -50,9 +51,9 @@ const CourseItem = ({categories , discount_amount , duration , id , image, order
                         </p>
                     </div>
                     <div className={styles.button}>
-                        <p className=" bg-indigo-600 text-white">
+                        <Link href={"/course/" + id} className=" bg-indigo-600 text-white">
                             ثبت نام
-                        </p>
+                        </Link>
                     </div>
                 </div>
             </div>

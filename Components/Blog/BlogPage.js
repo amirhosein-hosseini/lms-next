@@ -1,10 +1,10 @@
 'use client'
 import styles from "./styles.module.scss";
 import search from "../../public/Images/search.png";
-import BlogItem from "../CourseItem/BlogItem";
 import Image from 'next/image';
 import { useEffect, useState } from "react";
 import { getAllBlogs } from "@/api/Blog/blog";
+import BlogItem from "./BlogItem";
 
 
 const BlogPage = () => {
@@ -28,7 +28,6 @@ const BlogPage = () => {
     }, []);
 
 
-    console.log(blogs)
     
     return(
         <div className={styles.blog}>

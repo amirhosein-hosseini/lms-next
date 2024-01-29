@@ -2,7 +2,8 @@
 import blogimage from "../../public/Images/blogimage.png";
 import usergray from "../../public/Images/usergray.png";
 import Image from 'next/image';
-import styles from "./Styles.module.scss";
+import styles from "./styles.module.scss";
+import Link from "next/link";
 
 const BlogItem = ({author , category , category_slug , comment_count , commetns, content , created_at , description , id , image , locale , meta_description , slug , tags , title}) => {
     return(
@@ -30,9 +31,9 @@ const BlogItem = ({author , category , category_slug , comment_count , commetns,
                     </p>
                 </div>
                 <div className={styles.button}>
-                    <p>
+                    <Link href={"/blog/" + id}>
                         مشاهده 
-                    </p>
+                    </Link>
                 </div>
             </div>
         </div>
