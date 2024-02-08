@@ -6,15 +6,27 @@ import star from "../../public/Images/star.png";
 import Image from 'next/image';
 import styles from "./Styles.module.scss";
 import Link from "next/link";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+
+
+
+
 
 const CourseItem = ({categories , discount_amount , duration , id , image, order , price , price_string , price_with_discount , slug , start_date , status , teacher , title}) => {
     
 
+    useEffect(() => {
+        AOS.init();
+    }, [])
+
+    console.log(image)
 
     return(
-        <div className={styles.slideritem + " bg-white text-right"}>
+        <div className={styles.slideritem + " bg-white text-right"} data-aos="zoom-in" data-aos-duration="1500">
             <div className={styles.slideritem__image}>
-                {image != null ? <img src={image} alt="image" /> : ""}
+                {image != "" ? <img src={image} alt="image" /> : <img src="../../images/defaultcourseimage.jpg" alt="image" />}
                 {/* <img src={image} alt="image" /> */}
             </div>
             <div className={styles.slideritem__desc}>

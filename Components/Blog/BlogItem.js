@@ -4,10 +4,19 @@ import usergray from "../../public/Images/usergray.png";
 import Image from 'next/image';
 import styles from "./styles.module.scss";
 import Link from "next/link";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const BlogItem = ({author , category , category_slug , comment_count , commetns, content , created_at , description , id , image , locale , meta_description , slug , tags , title}) => {
+    
+    useEffect(() => {
+        AOS.init();
+    }, [])
+
+    
     return(
-        <div className={styles.blogitem + " bg-white flex flex-col justify-between items-center p-3 text-right"}>
+        <div className={styles.blogitem + " bg-white flex flex-col justify-between items-center p-3 text-right"} data-aos="zoom-in" data-aos-duration="1500">
             <div>
                 <div className={styles.blogitem__image}>
                     <img src={image} alt="image" />

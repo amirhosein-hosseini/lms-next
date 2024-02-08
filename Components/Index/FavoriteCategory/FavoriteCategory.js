@@ -4,12 +4,16 @@ import Image from 'next/image';
 import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
 import { getAllFavoriteCategories } from "@/api/index";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const FavoriteCategory = () => {
 
     const [favoriteCategoreis , setFavoriteCategories] = useState(null);
 
-
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     // get all discount courses
     useEffect(() => {
@@ -35,7 +39,7 @@ const FavoriteCategory = () => {
             </div>
             <div className={styles.favoritecategory__items + " mt-8 mb-16"}>
                 {favoriteCategoreis?.map((item) => (
-                    <div className={styles.item + " flex items-center justify-center flex-col bg-white p-8"}>
+                    <div className={styles.item + " flex items-center justify-center flex-col bg-white p-8"} data-aos="zoom-in" data-aos-duration="1500">
                         <div className={styles.item__image}>
                             <img src={item?.icon} alt="image"/>
                         </div>
