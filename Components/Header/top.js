@@ -183,10 +183,12 @@ const Top = () => {
         </ul>
         <div className={styles.top__sign}>
           <div className={styles.signbutton}>
-            <a href="./production">ورود / عضویت</a>
+            <Link href="/login">ورود / عضویت</Link>
           </div>
           <div className={styles.basket}>
-            <Image src={basket} alt="" />
+            <Link href={"/cart"}>
+              <Image src={basket} alt="" />
+            </Link>
             <div className={styles.basketnumber}>
               <span>2</span>
             </div>

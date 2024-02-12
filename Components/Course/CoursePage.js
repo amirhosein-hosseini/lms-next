@@ -5,9 +5,11 @@ import CourseFilter from "./CourseFilter";
 import { useEffect, useState } from "react";
 import { getAllCourse } from "@/api/course/Course";
 import down from "../../public/Images/down.png";
+import top from "../../public/Images/top.png";
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
 
-const CoursePage = () => {
+const CoursePage = ({slug}) => {
 
     const [courses , setCourses] = useState(null);
     const [filter , setFilter] = useState({
@@ -15,7 +17,12 @@ const CoursePage = () => {
       "discount" : false,
       "type" : null,
       "sort" : null,
+      "cat" : slug,
+      "limit" : 9,
     });
+    const [sortHeaderShow , setSortHeaderShow] = useState(false);
+    const [sortHeaderValue , setSortHeaderValue] = useState("جدید ترین")
+    const [typeHeaderShow , setTypeHeaderShow] = useState(false);
 
 
 
@@ -32,11 +39,21 @@ const CoursePage = () => {
     }, [filter]);
 
 
-    const handleSort = (place , value) => {
+    const handleSortHeader = () => {
+        setSortHeaderShow(!sortHeaderShow);
+    }
+
+    const handleTypeHeader = () => {
+        setTypeHeaderShow(!typeHeaderShow);
+    }
+
+
+    const handleSort = (place , value , name) => {
       setFilter((prevFilterData) => ({
         ...prevFilterData,
         [place]: value,
       }))
+      setSortHeaderValue(name)
     }
 
     const handleCheckboxChange = (event) => {
@@ -57,6 +74,8 @@ const CoursePage = () => {
     }
 
 
+
+    
 
     return(
         <div className={styles.coursePage + " flex"}>
@@ -81,23 +100,27 @@ const CoursePage = () => {
             </div>
             <div className={styles.courseFilter + " flex flex-col"}>
               <div className={styles.courseFilter__topic + " flex flex-col p-4 text-right"}>
-                  <div className={styles.header + " flex justify-between items-center flex-row-reverse cursor-pointer"}>
+                  <div className={styles.header + " flex justify-between items-center flex-row-reverse cursor-pointer"} onClick={handleSortHeader}>
                       <p>
-                          جدید ترین
+                          {sortHeaderValue}
                       </p>
-                      <Image src={down} alt="icon" />
+                      {sortHeaderShow === false ?<Image src={down} alt="icon" /> : <Image src={top} alt="icon" />}
+                      
                   </div>
-                  <div className={styles.items + " flex flex-col"}>
-                      <p className={styles.item + " cursor-pointer"} onClick={() => handleSort("sort" , "newest")}>
-                          جدید ترین
-                      </p>
-                      <p className={styles.item + " cursor-pointer"} onClick={() => handleSort("sort" , "expensive")}>
-                          گران ترین
-                      </p>
-                      <p className={styles.item + " cursor-pointer"} onClick={() => handleSort("sort" , "inexpensive")}>
-                          ارزان ترین
-                      </p>
-                  </div>
+                  {sortHeaderShow === true ? 
+                    <div className={styles.items + " flex flex-col"}>
+                        <p className={styles.item + " cursor-pointer"} onClick={() => handleSort("sort" , "newest" , "جدید ترین")}>
+                            جدید ترین
+                        </p>
+                        <p className={styles.item + " cursor-pointer"} onClick={() => handleSort("sort" , "expensive" , "گران ترین")}>
+                            گران ترین
+                        </p>
+                        <p className={styles.item + " cursor-pointer"} onClick={() => handleSort("sort" , "inexpensive" , "ارزان ترین")}>
+                            ارزان ترین
+                        </p>
+                    </div>
+                  : ""
+                  }
               </div>
               <div className={styles.courseFilter__options + " flex flex-col p-4 text-right"}>
                   <div className={styles.switchOption + " flex justify-between items-center flex-row-reverse"}>
@@ -114,38 +137,44 @@ const CoursePage = () => {
                           تخفیف دار
                       </p>
                       <label class="switch">
-                          <input type="checkbox" name="dicount" onChange={handleCheckboxChange}/>
+                          <input type="checkbox" name="discount" onChange={handleCheckboxChange}/>
                           <span class="slider round" />
                       </label>
                   </div>
                   <div className={styles.radioOption}>
-                      <div className={styles.radioOption__header + " flex justify-between items-center flex-row-reverse cursor-pointer"}>
+                      <div className={styles.radioOption__header + " flex justify-between items-center flex-row-reverse cursor-pointer"} onClick={handleTypeHeader}>
                           <p>
                               نوع محتوا
                           </p>
-                          <Image src={down} alt="icon" />
+                          {typeHeaderShow === false ? <Image src={down} alt="icon" /> : <Image src={top} alt="icon" />}
                       </div>
-                      <div className={styles.radioOption__items}>
-                          <form className={styles.item + " flex flex-col"}>
-                              <div className={styles.formGroup + " flex items-center"}>
-                                  <input type="radio" id="video" value="video" name="type" onChange={handleRadioChange} />
-                                  <label for="video">ویدیویی</label>
-                              </div>
-                              <div className={styles.formGroup + " flex items-center"}>
-                                  <input type="radio" id="webinar" value="webinar" name="type" onChange={handleRadioChange} />
-                                  <label for="webinar">وبینار</label>
-                              </div>
-                              <div className={styles.formGroup + " flex items-center"}>
-                                  <input type="radio" id="text" value="text" name="type" onChange={handleRadioChange} />
-                                  <label for="text">دوره متنی</label>
-                              </div>
-                          </form>
-                      </div>
+                      {typeHeaderShow === true ? 
+                        <div className={styles.radioOption__items}>
+                            <form className={styles.item + " flex flex-col"}>
+                                <div className={styles.formGroup + " flex items-center"}>
+                                    <input type="radio" id="video" value="course" name="type" onChange={handleRadioChange} />
+                                    <label for="video">ویدیویی</label>
+                                </div>
+                                <div className={styles.formGroup + " flex items-center"}>
+                                    <input type="radio" id="webinar" value="webinar" name="type" onChange={handleRadioChange} />
+                                    <label for="webinar">وبینار</label>
+                                </div>
+                                <div className={styles.formGroup + " flex items-center"}>
+                                    <input type="radio" id="text" value="text_lesson" name="type" onChange={handleRadioChange} />
+                                    <label for="text">دوره متنی</label>
+                                </div>
+                            </form>
+                        </div>
+                        : ""
+                      }
                   </div>
               </div>
           </div>
         </div>
     )
 }
+
+
+
 
 export default CoursePage;

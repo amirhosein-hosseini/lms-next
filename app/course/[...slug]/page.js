@@ -1,9 +1,9 @@
-import SinglePage from "@/Components/Single/SinglePage";
+import CoursePage from "@/Components/Course/CoursePage";
 
 const Single = ({params}) => {
 
     return(
-        <SinglePage slug={params.slug} />
+        <CoursePage slug={params.slug} />
     )
 }
 

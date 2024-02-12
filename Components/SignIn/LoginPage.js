@@ -1,8 +1,60 @@
 'use client'
 import styles from "./styles.module.scss";
 import { BlueButton, OutlineButton } from "../../Components/button/Button";
+import Link from "next/link";
+import { useState } from "react";
+import axios from "axios";
+import { apiKey, prefix, url } from "@/api/domain";
+import { useAuth } from "@/context/authContext";
 
 const LoginPage = () => {
+
+
+  const {signIn} = useAuth();
+  const [loading , setLoading] = useState(false);
+  const [userData , setUserData] = useState({
+    "username" : "",
+    "password" : "",
+  });
+
+
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserData(prevUserData => ({
+      ...prevUserData,
+      [name]: value
+    }));
+  }
+
+
+  const handleLognIn = (e) => {
+
+    e.preventDefault();
+
+
+    axios.post(url + prefix + 'login', userData , {
+      headers : {
+        "accept" : "application/json",
+        "x-api-key" : apiKey,
+      }
+    })
+      .then((response) => {
+        if(response.data.status == "login"){
+          signIn(response?.data?.data?.token);
+        }else{
+          toast.error(response?.data?.message)
+        }
+      })
+      .catch((error) => {
+          console.log(error)
+      })
+      .finally(() => {
+          setLoading(false);
+      });
+  }
+
+
   return (
     <div className={styles.signin}>
       <div className={styles.signin__wrapper}>
@@ -16,13 +68,13 @@ const LoginPage = () => {
           <form>
             <div className={styles.formgroup}>
               <label>تلفن همراه</label>
-              <input type="text"></input>
+              <input type="text" name="username" onChange={handleInputChange}></input>
             </div>
             <div className={styles.formgroup}>
               <label>گذرواژه</label>
-              <input type="password"></input>
+              <input type="text" name="password" onChange={handleInputChange}></input>
             </div>
-            <div className={styles.formbutton}>
+            <div className={styles.formbutton} onClick={handleLognIn}>
               <BlueButton>ورود</BlueButton>
             </div>
             <div className={styles.formbutton}>
@@ -31,7 +83,9 @@ const LoginPage = () => {
             </div>
             <div className={styles.formgotosign}>
               <p>آیا حساب کاربری ندارید؟</p>
-              <OutlineButton>ثبت نام</OutlineButton>
+              <Link href={"/signin"}>
+                <OutlineButton>ثبت نام</OutlineButton>
+              </Link>
             </div>
           </form>
         </div>

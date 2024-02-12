@@ -6,6 +6,7 @@ import SingleDescItem from "./SingleDescItem";
 
 const SingleDesc = ({data}) => {
 
+
     return(
         <div className={styles.SingleDesc + " p-6"}>
             {data?.image && 
@@ -55,19 +56,9 @@ const SingleDesc = ({data}) => {
                 </div>
             }
             <div className={styles.SingleDesc__items}>
-                <p className={styles.title}>
-                    دانلود دوره ها
-                </p>
-                <SingleDescItem />
-                <SingleDescItem />
-                <SingleDescItem />
-            </div>
-            <div className={styles.SingleDesc__items}>
-                <p className={styles.title}>
-                    مدرک
-                </p>
-                <SingleDescItem />
-                <SingleDescItem />
+                {data?.faqs?.map((item) => (
+                    <SingleDescItem data={item} />
+                ))}
             </div>
         </div>
     )

@@ -2,7 +2,7 @@ import CoursePage from "@/Components/Course/CoursePage";
 
 const Course = () => {
     return(
-        <CoursePage />
+        <CoursePage slug={null} />
     )   
 }
 

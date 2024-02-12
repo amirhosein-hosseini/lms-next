@@ -2,9 +2,9 @@
 import "./HomeSlider.css";
 import Slideri from "../Slider/Slider";
 import CourseItem from "@/Components/CourseItem/CourseItem";
+import Link from "next/link";
 
-const HomeSlider = ({data , title}) => {
-
+const HomeSlider = ({data , title , cat}) => {
 
     return(
         <div className="container home-slider-wrapper">
@@ -13,7 +13,9 @@ const HomeSlider = ({data , title}) => {
                     {title}
                 </p>
                 <p className="home-slider-button">
-                    مشاهده همه
+                    <Link href={'/course'}>
+                        مشاهده همه  
+                    </Link>
                 </p>
             </div>
             <div className="home-slider-items">

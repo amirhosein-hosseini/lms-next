@@ -21,7 +21,6 @@ const CourseItem = ({categories , discount_amount , duration , id , image, order
         AOS.init();
     }, [])
 
-    console.log(image)
 
     return(
         <div className={styles.slideritem + " bg-white text-right"} data-aos="zoom-in" data-aos-duration="1500">
@@ -63,7 +62,7 @@ const CourseItem = ({categories , discount_amount , duration , id , image, order
                         </p>
                     </div>
                     <div className={styles.button}>
-                        <Link href={"/course/" + id} className=" bg-indigo-600 text-white">
+                        <Link href={"/courses/" + id} className=" bg-indigo-600 text-white">
                             ثبت نام
                         </Link>
                     </div>

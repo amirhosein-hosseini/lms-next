@@ -131,3 +131,13 @@ html::before{
   .slider.round:before {
     border-radius: 50%;
   }
+
+
+
+/* toast styles */
+.Toastify__toast-body{
+  text-align: right;
+  font-family: "ye-regular";
+  font-size: 12px;
+  color: black;
+}

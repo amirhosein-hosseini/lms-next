@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getAllFavoriteCategories } from "@/api/index";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Link from "next/link";
 
 const FavoriteCategory = () => {
 
@@ -29,6 +30,9 @@ const FavoriteCategory = () => {
     }, []);
 
 
+    console.log(favoriteCategoreis)
+
+
 
     return(
         <div className={styles.favoritecategory}>
@@ -39,16 +43,18 @@ const FavoriteCategory = () => {
             </div>
             <div className={styles.favoritecategory__items + " mt-8 mb-16"}>
                 {favoriteCategoreis?.map((item) => (
-                    <div className={styles.item + " flex items-center justify-center flex-col bg-white p-8"} data-aos="zoom-in" data-aos-duration="1500">
-                        <div className={styles.item__image}>
-                            <img src={item?.icon} alt="image"/>
+                    <Link href={"/course/" + item?.slug}>
+                        <div className={styles.item + " flex items-center justify-center flex-col bg-white p-8"} data-aos="zoom-in" data-aos-duration="1500">
+                            <div className={styles.item__image}>
+                                <img src={item?.icon} alt="image"/>
+                            </div>
+                            <div className={styles.item__desc}>
+                                <p className="text-center">
+                                    {item?.title}
+                                </p>
+                            </div>
                         </div>
-                        <div className={styles.item__desc}>
-                            <p className="text-center">
-                                {item?.title}
-                            </p>
-                        </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

@@ -89,18 +89,17 @@ const HomePage = () => {
     }, []);
 
 
-    console.log(favoriteTeachers)
 
 
     return(
         <div className="home">
             <HomeHero />
             <Achievement />
-            {newCourses ? <HomeSlider data={newCourses} title={"جدیدترین دوره ها"} /> : ""}
+            {newCourses ? <HomeSlider data={newCourses} title={"جدیدترین دوره ها"} cat={"newest"} /> : ""}
             <FavoriteCategory />
-            {bestSellers ? <HomeSlider data={bestSellers} title={"پر فروش ترین ها"} /> : ""}
+            {bestSellers ? <HomeSlider data={bestSellers} title={"پر فروش ترین ها"} cat={"bestsellers"} /> : ""}
             <BecomTeacher />
-            {discountCourses ? <HomeSlider data={discountCourses} title={"تخفیف دار ها"} /> : ""}
+            {discountCourses ? <HomeSlider data={discountCourses} title={"تخفیف دار ها"} cat={"discount"} /> : ""}
             {favoriteTeachers ? <FavoriteTeachers data={favoriteTeachers} /> : ""}
             {indexBlogs ? <BlogSlider data={indexBlogs} /> : ""}
         </div>
