@@ -4,7 +4,7 @@ import singleimage from "../../Public/Images/singleimage.png";
 import Image from 'next/image';
 import SingleDescItem from "./SingleDescItem";
 
-const SingleDesc = ({data}) => {
+const SingleDesc = ({data , faqs}) => {
 
 
     return(
@@ -56,7 +56,10 @@ const SingleDesc = ({data}) => {
                 </div>
             }
             <div className={styles.SingleDesc__items}>
-                {data?.faqs?.map((item) => (
+                <p className={styles.title}>
+                    سوالات متداول   
+                </p>
+                {faqs?.map((item) => (
                     <SingleDescItem data={item} />
                 ))}
             </div>

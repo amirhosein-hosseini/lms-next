@@ -30,7 +30,6 @@ const FavoriteCategory = () => {
     }, []);
 
 
-    console.log(favoriteCategoreis)
 
 
 

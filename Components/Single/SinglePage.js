@@ -7,12 +7,27 @@ import message from "../../Public/Images/message.png";
 import { Tag } from "../../Components/button/Button";
 import SignBar from "../../Components/Single/Signbar";
 import Image from 'next/image';
-import { getShowCourse } from "@/api/course/ShowCourse";
+import { getAllChapters, getAllCourseComments, getAllSessionChapters, getCourseFaqs, getShowCourse } from "@/api/course/ShowCourse";
 import { useEffect, useState } from "react";
+import SingleContent from "./SingleContent";
+import SingleComment from "./SingleComment";
+import Link from "next/link";
 
 const SinglePage = ({slug}) => {
 
   const [courseData , setCourseData] = useState(null);
+  const [fadsData , setFaqsData] = useState(null);
+  const [descLevel , setDescLevel] = useState("desc"); 
+  const [chapters , setChapters] = useState(null);
+  const [comments , setComments] = useState(null);
+  const [sessionChapters , setSessionChapters] = useState(null);
+  const [id , setId] = useState(null);
+
+
+
+  const handleDescLevel = (level) => {
+    setDescLevel(level);
+  }
 
 
 
@@ -21,13 +36,78 @@ const SinglePage = ({slug}) => {
     const fetchData = async () => {
       try {
         const data = await getShowCourse(slug[0]);
-        setCourseData(data.data);
+        setCourseData(data?.data);
+        setId(data?.data?.id)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
   }, []);
+
+
+
+  // get all course faqs datas
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getCourseFaqs(slug[0]);
+        setFaqsData(data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+
+
+    // get all course chapters datas
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const data = await getAllChapters(id);
+          setChapters(data.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+      fetchData();
+    }, [id]);
+
+
+    // get all course comments datas
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const data = await getAllCourseComments(id);
+          setComments(data.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+      fetchData();
+    }, [id]);
+
+
+    // get all course comments datas
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const data = await getAllSessionChapters(id);
+          setSessionChapters(data.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+      fetchData();
+    }, [id]);
+
+
+
+
+
+
 
 
   return (
@@ -54,7 +134,9 @@ const SinglePage = ({slug}) => {
               }
             >
               {courseData?.categories?.map((item) => (
-                <Tag>{item?.title}</Tag>
+                <Link href={"/course/" + item?.slug}>
+                  <Tag>{item?.title}</Tag>
+                </Link>
               ))}
             </div>
           </div>
@@ -64,21 +146,24 @@ const SinglePage = ({slug}) => {
               " p-6 flex items-center bg-white mb-5"
             }
           >
-            <div className={styles.item + " flex items-center"}>
+            <div className={styles.item + " flex items-center"} onClick={() => handleDescLevel("desc")}>
               <p>توضیحات</p>
               <Image src={desc} alt="icon" />
             </div>
-            <div className={styles.item + " flex items-center"}>
+            <div className={styles.item + " flex items-center"} onClick={() => handleDescLevel("content")}>
               <p>محتوا</p>
               <Image src={content} alt="icon" />
             </div>
-            <div className={styles.item + " flex items-center"}>
+            <div className={styles.item + " flex items-center"} onClick={() => handleDescLevel("comment")}>
               <p>نظرات</p>
               <Image src={message} alt="icon" />
             </div>
           </div>
         </div>
-        <SingleDesc data={courseData} />
+        {descLevel == "desc" ? <SingleDesc data={courseData} faqs={fadsData} /> :
+          descLevel == "content" ? <SingleContent chapters={chapters} slug={id} session={sessionChapters} /> :
+          descLevel == "comment" ? <SingleComment data={comments} /> : ""
+        }
       </div>
       <SignBar data={courseData} />
     </div>
