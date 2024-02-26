@@ -110,6 +110,7 @@ const SinglePage = ({slug}) => {
 
 
 
+
   return (
     <div className={styles.singleWrapper + " flex flex-row-reverse"}>
       <div className={styles.singlepage + " flex flex-col"}>
@@ -161,7 +162,7 @@ const SinglePage = ({slug}) => {
           </div>
         </div>
         {descLevel == "desc" ? <SingleDesc data={courseData} faqs={fadsData} /> :
-          descLevel == "content" ? <SingleContent chapters={chapters} slug={id} session={sessionChapters} /> :
+          descLevel == "content" ? <SingleContent slug={id} /> :
           descLevel == "comment" ? <SingleComment data={comments} /> : ""
         }
       </div>
