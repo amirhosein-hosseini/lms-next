@@ -36,7 +36,6 @@ export const getAllChapters = async (id) => {
 
   const token = getCookie("token");
 
-  console.log(id)
 
 
   try {

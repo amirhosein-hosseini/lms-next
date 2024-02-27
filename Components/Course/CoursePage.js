@@ -11,13 +11,17 @@ import { useRouter } from "next/navigation";
 
 const CoursePage = ({slug}) => {
 
+    let cat = null;
+    slug === null ? cat = null : cat = slug[0];
+
+
     const [courses , setCourses] = useState(null);
     const [filter , setFilter] = useState({
       "free" : false,
       "discount" : false,
       "type" : null,
       "sort" : null,
-      "cat" : slug,
+      "cat" : cat,
       "limit" : 9,
     });
     const [sortHeaderShow , setSortHeaderShow] = useState(false);

@@ -80,7 +80,7 @@ const SingleContent = ({ slug }) => {
               >
                 <div className={styles.title__right}>
                   <p>{item.title}</p>
-                  <img src="../../images/down.png" alt="vector" />
+                  
                 </div>
                 <p className={styles.title__left}>{item.topics_count}فایل</p>
               </div>
@@ -128,7 +128,7 @@ const SingleContent = ({ slug }) => {
             >
               <div className={styles.title__right}>
                 <p>{item.title}</p>
-                <img src="../../images/down.png" alt="vector" />
+                
               </div>
               <p className={styles.title__left}>{item.topics_count}فایل</p>
             </div>

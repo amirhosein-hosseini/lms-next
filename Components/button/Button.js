@@ -17,9 +17,9 @@ export const OutlineButton = ({children}) => {
     )
 }
 
-export const PurpleButton = ({children}) => {
+export const PurpleButton = ({children , onclick}) => {
     return(
-        <button className={styles.purplebutton}>
+        <button className={styles.purplebutton} onClick={onclick}>
             {children}
         </button>
     )

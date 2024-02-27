@@ -9,7 +9,7 @@ import { useAuth } from "@/context/authContext";
 import UserDropDown from "./userDropDown";
 import { getUserQuickInfo } from "@/api/user/user";
 
-const Top = () => {
+const Top = ({categories}) => {
 
   const {isLoggedIn} = useAuth();
   const [openCategory, setOpenCategory] = useState(false);
@@ -22,19 +22,11 @@ const Top = () => {
     openCategory == false ? setOpenCategory(true) : setOpenCategory(false);
   };
 
-  const handleCloseCategory = () => {
-    openCategory == false ? setOpenCategory(true) : setOpenCategory(false);
-  };
 
   const handleShowUserDetail = () => {
     setShowUserDetail(!showUserDetail);
   }
 
-  const handleMobileCategoryClick = () => {
-    if (isMobile) {
-      setOpenCategory(!openCategory);
-    }
-  };
 
   const checkIsMobile = () => {
     const screenWidth = window.innerWidth;
@@ -72,6 +64,8 @@ const Top = () => {
   }, []);
 
 
+  console.log(categories)
+
 
 
 
@@ -103,9 +97,7 @@ const Top = () => {
           </li>
           <li
            className={styles.top__list__category}
-           onMouseEnter={handleOpenCategory}
-           onMouseLeave={handleCloseCategory}
-           onClick={handleMobileCategoryClick}
+           onClick={handleOpenCategory}
           >
             <span>دسته بندی ها</span>
           </li>
@@ -113,91 +105,28 @@ const Top = () => {
               className={styles.top__list__category__categories}
               style={isMobile ? { display: openCategory ? "grid" : "none" } : { display: openCategory ? "grid" : "none" }}
             >
-              <div className={styles.top__list__category__categories__item}>
-                <div
-                  className={
-                    styles.top__list__category__categories__item__title
-                  }
-                >
-                  <p>مهندسی برق</p>
+              {categories?.map((item) => (
+                <div className={styles.top__list__category__categories__item}>
+                  <div
+                    className={
+                      styles.top__list__category__categories__item__title
+                    }
+                  >
+                    <Link onClick={handleOpenCategory} href={"/course/" + item?.slug}>
+                      <p>{item?.title}</p>
+                    </Link>
+                  </div>
+                  <ul
+                    className={styles.top__list__category__categories__item__list}
+                  >
+                    {item?.sub_categories?.map((sub) => (
+                      <Link onClick={handleOpenCategory} href={"/course/" + sub?.slug}>
+                        <li>{sub?.title}</li>
+                      </Link>
+                    ))}
+                  </ul>
                 </div>
-                <ul
-                  className={styles.top__list__category__categories__item__list}
-                >
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                </ul>
-              </div>
-              <div className={styles.top__list__category__categories__item}>
-                <div
-                  className={
-                    styles.top__list__category__categories__item__title
-                  }
-                >
-                  <p>مهندسی برق</p>
-                </div>
-                <ul
-                  className={styles.top__list__category__categories__item__list}
-                >
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                </ul>
-              </div>
-              <div className={styles.top__list__category__categories__item}>
-                <div
-                  className={
-                    styles.top__list__category__categories__item__title
-                  }
-                >
-                  <p>مهندسی برق</p>
-                </div>
-                <ul
-                  className={styles.top__list__category__categories__item__list}
-                >
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                </ul>
-              </div>
-              <div className={styles.top__list__category__categories__item}>
-                <div
-                  className={
-                    styles.top__list__category__categories__item__title
-                  }
-                >
-                  <p>مهندسی برق</p>
-                </div>
-                <ul
-                  className={styles.top__list__category__categories__item__list}
-                >
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                </ul>
-              </div>
-              <div className={styles.top__list__category__categories__item}>
-                <div
-                  className={
-                    styles.top__list__category__categories__item__title
-                  }
-                >
-                  <p>مهندسی برق</p>
-                </div>
-                <ul
-                  className={styles.top__list__category__categories__item__list}
-                >
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                  <li>کنکور ارشد برق</li>
-                </ul>
-              </div>
+              ))}
             </li>
           <li>
             <Link href="/blog">وبلاگ</Link>

@@ -20,7 +20,6 @@ const Viewer = ({slug}) => {
         fetchData();
     }, []);
 
-    console.log(file)
 
     return(
         <div className={styles.viewer}>

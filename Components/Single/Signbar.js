@@ -2,7 +2,6 @@
 import { PurpleButton } from "../../Components/button/Button";
 import styles from "./styles.module.scss";
 import user from "../../Public/Images/sign-user.png";
-
 import video from "../../Public/Images/sign-video.png";
 import clock from "../../Public/Images/sign-clock.png";
 import grade from "../../Public/Images/sign-grade.png";
@@ -12,8 +11,41 @@ import teacher from "../../Public/Images/sign-teacher.png";
 import stars from "../../Public/Images/stars.png";
 import { Link } from "react-router-dom";
 import Image from 'next/image';
+import axios from "axios";
+import { apiKey, prefix, url } from "@/api/domain";
+import { getCookie } from "@/api/auth";
 
 const SignBar = ({data}) => {
+
+  const token = getCookie('token');
+
+
+  const handleAddToCart = (e) => {
+
+    e.preventDefault();
+
+
+    axios.post(url + prefix + 'panel/cart', {"item_id" : data?.id , "item_name" : "webinar", "ticket_id": null, "specifications": "", "quantity": ""} , {
+      headers : {
+        "accept" : "application/json",
+        "x-api-key" : apiKey,
+        'Authorization' : 'Bearer ' + token,
+      }
+    })
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+          console.log(error)
+      })
+      .finally(() => {
+
+      });
+  }
+
+  console.log(data)
+
+
   return (
     <div className={styles.Signbar + " flex flex-col"}>
       <div className={styles.Signbar__price + " text-right"}>
@@ -37,7 +69,7 @@ const SignBar = ({data}) => {
           styles.Signbar__buttons + " flex flex-col justify-center items-center"
         }
       >
-        <PurpleButton>افزودن به سبد خرید</PurpleButton>
+        <PurpleButton onclick={handleAddToCart}>افزودن به سبد خرید</PurpleButton>
       </div>
       <div className={styles.Signbar__desc}>
         <ul className={"flex flex-col text-right"}>
