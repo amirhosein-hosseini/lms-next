@@ -4,11 +4,18 @@ import styles from "./styles.module.scss";
 import axios from "axios";
 import { apiKey, prefix, url } from "@/api/domain";
 import { getCookie } from "@/api/auth";
+import { useAuth } from "@/context/authContext";
 
 const UserDropDown = ({data}) => {
 
 
     const token = getCookie('token');
+    const {signOut} = useAuth();
+
+
+    const handleSignOut = () => {
+        signOut();
+    }
 
 
     
@@ -72,7 +79,7 @@ const UserDropDown = ({data}) => {
                             </svg>
                         </div>
                         <div className={styles.descwrapper}>
-                            <p className={styles.desc}>
+                            <p className={styles.desc} onClick={handleSignOut}>
                                 خروج
                             </p>
                         </div>

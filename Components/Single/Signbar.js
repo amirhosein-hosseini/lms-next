@@ -43,34 +43,43 @@ const SignBar = ({data}) => {
       });
   }
 
-  console.log(data)
+
 
 
   return (
     <div className={styles.Signbar + " flex flex-col"}>
-      <div className={styles.Signbar__price + " text-right"}>
-        <div className={styles.price + " flex flex-col"}>
-          {data?.price ? 
-            <p className={styles.RealPrice}>
-              قیمت:<span>{data?.price_string}</span>
-            </p>
-            : <p className={styles.RealPrice}>رایگان</p>
-        }
-          {data?.price_with_discount !== data?.price ?  
-            <p className={styles.discount}>
-              <span>{data?.price_with_discount}</span>تومان
-            </p>
-            : ""
-          }
-        </div>
-      </div>
-      <div
-        className={
-          styles.Signbar__buttons + " flex flex-col justify-center items-center"
-        }
-      >
-        <PurpleButton onclick={handleAddToCart}>افزودن به سبد خرید</PurpleButton>
-      </div>
+      {data?.auth_has_bought !== true ?
+        <>
+          <div className={styles.Signbar__price + " text-right"}>
+           <div className={styles.price + " flex flex-col"}>
+             {data?.price ? 
+               <p className={styles.RealPrice}>
+                 قیمت:<span>{data?.price_string}</span>
+               </p>
+               : <p className={styles.RealPrice}>رایگان</p>
+           }
+             {data?.price_with_discount !== data?.price ?  
+               <p className={styles.discount}>
+                 <span>{data?.price_with_discount}</span>تومان
+               </p>
+               : ""
+             }
+           </div>
+         </div>
+         <div
+           className={
+             styles.Signbar__buttons + " flex flex-col justify-center items-center"
+           }
+         >
+           <PurpleButton onclick={handleAddToCart}>افزودن به سبد خرید</PurpleButton>
+         </div> 
+        </> :
+          <div className={styles.Signbar__price + " text-right"}>
+            <div className={styles.price + " flex flex-col"}>
+              <p className={styles.RealPrice}>دوره خریداری شده</p>
+            </div>
+          </div>
+    }
       <div className={styles.Signbar__desc}>
         <ul className={"flex flex-col text-right"}>
           <li>

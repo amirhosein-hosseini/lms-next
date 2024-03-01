@@ -4,6 +4,7 @@ import React, { createContext, useState, useContext } from 'react';
 import { toast } from 'react-toastify';
 import { getCookie , deleteCookie , setCookie } from '@/api/auth';
 import { useRouter } from 'next/navigation';
+import { prefix, url } from '@/api/domain';
 
 
 const AuthContext = createContext();
@@ -15,20 +16,19 @@ export const AuthProvider = ({ children }) => {
   const [status , setStatus] = useState(null);
 
   const signOut = () => {
-    axios.post(domain + 'logout' , null , {
+    axios.post(url + prefix + 'logout' , null , {
       headers : {
           'Authorization' : 'Bearer ' + token,
       }
     })
       .then((response) => {
-          toast.success(response.data.message);
-          setStatus(response.data.status)
+          console.log(response)
           deleteCookie('token');
           setIsLoggedIn(false);
-          router.push('/signin')
+          router.push('/login')
       })
       .catch((error) => {
-          toast.error(error?.response?.data?.message);
+          console.log(error);
       });
   };
 

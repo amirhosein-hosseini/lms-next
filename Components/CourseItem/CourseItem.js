@@ -62,7 +62,7 @@ const CourseItem = ({categories , discount_amount , duration , id , image, order
                         </p>
                     </div>
                     <div className={styles.button}>
-                        <Link href={"/courses/" + id} className=" bg-indigo-600 text-white">
+                        <Link href={"/courses/" + slug} className=" bg-indigo-600 text-white">
                             ثبت نام
                         </Link>
                     </div>
