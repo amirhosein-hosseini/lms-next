@@ -22,7 +22,7 @@ const Viewer = ({slug}) => {
 
 
     return(
-        <div className={styles.viewer}>
+        <div className={styles.viewer + " max-md:flex-col-reverse"}>
             <div className={styles.viewer__list}>
                 <SingleContent slug={slug[0]} />
             </div>

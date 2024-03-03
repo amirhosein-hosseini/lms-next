@@ -112,7 +112,7 @@ const SinglePage = ({slug}) => {
 
 
   return (
-    <div className={styles.singleWrapper + " flex flex-row-reverse"}>
+    <div className={styles.singleWrapper + " flex flex-row-reverse max-md:flex-col-reverse"}>
       <div className={styles.singlepage + " flex flex-col"}>
         <div className={styles.singlepage__header}>
           <div
