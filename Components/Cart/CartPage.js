@@ -6,10 +6,15 @@ import Image from 'next/image';
 import { useEffect, useState } from "react";
 import { getAllCartList } from "@/api/cart/cart";
 import Link from "next/link";
+import axios from "axios";
+import { apiKey, prefix, url } from "@/api/domain";
+import { getCookie } from "@/api/auth";
+import { useRouter } from 'next/navigation';
 
 const CartPage = () => {
 
   const [cartList , setCartList] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +27,38 @@ const CartPage = () => {
     };
     fetchData();
   }, []);
+  
+
+  const reloadPage = () => {
+    window.location.reload(true);
+  };
+
+  const deleteData = async (id, reloadPage) => {
+    const token = getCookie('token');
+    
+    try {
+      // Send a DELETE request to the API endpoint with the specified ID
+      const response = await axios.delete(url + prefix + "panel/cart/" + id, {
+        headers: {
+          "accept": "application/json",
+          "x-api-key": apiKey,
+          'Authorization': 'Bearer ' + token,
+        }
+      });
+  
+      // If the request is successful, reload the page
+      console.log('Data deleted successfully:', response.data);
+      reloadPage();
+    } catch (error) {
+      // If there's an error, you can handle it here
+      console.error('Error deleting data:', error);
+    }
+  };
+
+
+  const handleDelete = (id) => {
+    deleteData(id, reloadPage);
+  }
 
 
 
@@ -47,7 +84,7 @@ const CartPage = () => {
               <div className={styles.item__left__price}>
                 <p>{item?.price}</p>
               </div>
-              <div className={styles.item__left__delete}>
+              <div className={styles.item__left__delete} onClick={() => handleDelete(item?.id)}>
                 <img src="../../images/delete.png" alt="icon" />
               </div>
             </div>
