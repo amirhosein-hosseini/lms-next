@@ -14,6 +14,8 @@
     @media only screen and (max-width:768px){
         background: transparent;
         padding: 0;
+        margin-top: 20px;
+        margin-bottom: 30px;
     }
     &__navopen{
         display: none;
@@ -100,10 +102,7 @@
                 z-index: 70;
                 direction: rtl;
                 @media only screen and (max-width:768px){
-                    position: relative;
-                    display: flex;
-                    flex-direction: column;
-                    right: 0;
+                    display: none !important;
                 }
                 &__item{
                     &__title{
@@ -294,4 +293,11 @@
             }
         }
     }
+}
+
+
+.topMobile{
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
