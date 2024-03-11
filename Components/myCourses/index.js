@@ -23,8 +23,6 @@ const MyCourses = () => {
     }, []);
 
 
-    console.log(myCourses)
-
 
     return(
         <div className={styles.mycourses + " grid grid-cols-3 max-md:grid-cols-1 gap-10"}>

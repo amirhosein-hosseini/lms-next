@@ -12,7 +12,7 @@ const HomeHero = () => {
     return(
         <div className={styles.wrapper + " flex mt-16"}>
             <div className={styles.wrapper__left + " mr-8"}>
-                <p className={styles.desc + " text-justify text-right"}>
+                <p className={styles.desc + " font-bold text-justify text-right"}>
                     خـــودآموزی ، کســــب تجربه ،
                     ورود به بازار کار با تـــــاپ لــرن            
                     با کـــمـــتــــــرین هـــزیـــــنه 

@@ -1,7 +1,12 @@
+"use client"
 import { getAllChapters, getAllChaptersFiles, getAllSessionChapters } from "@/api/course/ShowCourse";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import LoadingSvg from "../Loading/loadingSvg";
 import styles from "./styles.module.scss";
+import moment from "moment";
+import 'moment/locale/fa';
+import 'moment-jalaali';
 
 const SingleContent = ({ slug }) => {
 
@@ -67,6 +72,15 @@ const SingleContent = ({ slug }) => {
   }
 
 
+
+const changingDateFormat = (dateChose) => {
+    var date = moment.unix(dateChose).format("MM/DD/YYYY");
+    var jalaliDate = moment(date, "MM/DD/YYYY").locale("fa").format("llll");
+    return jalaliDate;
+}
+
+  console.log(session)
+
   return (
     <div className={styles.content}>
       <div className={styles.contentwrapper}>
@@ -85,37 +99,22 @@ const SingleContent = ({ slug }) => {
                 <p className={styles.title__left}>{item.topics_count}فایل</p>
               </div>
               {loading[item.id] === true ? 
-                <div className={styles.loading}>
-                  <svg
-                    className={styles.spinner}
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 50 50"
-                  >
-                    <circle
-                      className={styles.path}
-                      cx="25"
-                      cy="25"
-                      r="20"
-                      fill="none"
-                      strokeWidth="4"
-                    />
-                  </svg>
-                </div> : ""
-              }            
-              {showSessionFiles === item.id && (
-                <div className={styles.items}>
-                  {!loading[item.id] &&
-                    item?.sessions?.map((file) => (
-                      <div className={styles.desc} key={file.id}>
-                        <p className={styles.name}>{file.title}</p>
-                        <div className={styles.detail}>
-                          <Link href={"/viewer/" + slug + "/film/" + file?.id + "?tab=" + item?.id}>مشاهده ویدیو</Link>
-                          <p className={styles.duration}>{file.time}</p>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              )}
+                <LoadingSvg color={"black"} /> : ""
+              }     
+                  {showSessionFiles === item.id && (
+                    <div className={styles.items}>
+                      {!loading[item.id] &&
+                        item?.sessions?.map((file) => (
+                          <div className={styles.desc} key={file.id}>
+                            <p className={styles.name}>{file.title}</p>
+                            <div className={styles.detail}>
+                              <p className={styles.duration}>{changingDateFormat(file?.date)}</p>
+                              {file?.user_has_access == true && file?.can_join == true && file?.join_link ? <a src={file?.join_link}>رفتن به کلاس</a> : <p className="text[#6D7083] text-xs p-2 rounded-lg bg-[#eee]">لینک در دسترس نیست</p>}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  )}     
             </div>
           ))}
         </div>
@@ -133,22 +132,7 @@ const SingleContent = ({ slug }) => {
               <p className={styles.title__left}>{item.topics_count}فایل</p>
             </div>
             {loading[item.id] === true ? 
-              <div className={styles.loading}>
-                <svg
-                  className={styles.spinner}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 50 50"
-                >
-                  <circle
-                    className={styles.path}
-                    cx="25"
-                    cy="25"
-                    r="20"
-                    fill="none"
-                    strokeWidth="4"
-                  />
-                </svg>
-              </div> : ""
+              <LoadingSvg color={"black"} /> : ""
             }            
             {openTitleId === item.id && (
               <div className={styles.items}>
@@ -157,7 +141,7 @@ const SingleContent = ({ slug }) => {
                     <div className={styles.desc} key={file.id}>
                       <p className={styles.name}>{file.title}</p>
                       <div className={styles.detail}>
-                        <Link href={"/viewer/" + slug + "/film/" + file?.id + "/" + item?.id}>مشاهده ویدیو</Link>
+                        {file?.auth_has_access == true ? <Link href={"/viewer/" + slug + "/film/" + file?.id + "/" + item?.id}>مشاهده ویدیو</Link> : <p className="text[#6D7083] text-xs">مشاهده ویدیو</p>}
                         <p className={styles.duration}>{file.time}</p>
                       </div>
                     </div>

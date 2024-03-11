@@ -12,6 +12,7 @@ export const getAllCourse = async (filter) => {
     filter.sort != null ? uri = uri + "&sort=" + filter.sort : "";
     filter.free != false ? uri = uri + "&free" : "";
     filter.discount != false ? uri = uri + "&discount" : "";  
+    uri = uri + "&offset=" + filter.offset;
 
     
     try {

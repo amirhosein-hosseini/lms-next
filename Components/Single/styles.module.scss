@@ -483,8 +483,7 @@
     height: 40px;  // Adjust the size as needed
   }
   
-  .path {
-    stroke: #000;  // Adjust the color as needed
+  .mpath {
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
   }

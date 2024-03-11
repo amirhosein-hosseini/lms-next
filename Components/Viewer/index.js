@@ -36,6 +36,8 @@ const Viewer = ({slug}) => {
     fetchData();
   }, []);
 
+  console.log(file?.file)
+
 
 
     return(
@@ -57,7 +59,7 @@ const Viewer = ({slug}) => {
               <SingleContent slug={slug[0]} />
             </div>
             <div className={styles.viewer__video}>
-                <iframe allowfullscreen="" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture full" type="text/html" class="block w-full h-[360px] sm:h-[520px] md:h-[740px]"></iframe>
+                <iframe src={file?.file} allowfullscreen="" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture full" type="text/html" class="block w-full h-[360px] sm:h-[520px] md:h-[740px]"></iframe>
             </div>
         </div>
     )

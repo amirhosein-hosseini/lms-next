@@ -17,6 +17,9 @@
         margin-top: 20px;
         margin-bottom: 30px;
     }
+    .listcontainer{
+        flex: 1;
+    }
     &__navopen{
         display: none;
         svg{
@@ -45,9 +48,9 @@
         display: flex;
         align-items: center;
         gap: 20px;
-        margin-right: 8%;
         flex-direction: row-reverse;
         @media only screen and (max-width:768px){
+            display: none !important;
             z-index: 1000;
             position: absolute;
             top: 0;
@@ -76,7 +79,7 @@
         }
         li{
             font-family: "semi-bold";
-            font-size: 24px;
+            font-size: 18px;
             color: rgb(44, 49, 86, 70%);
             cursor: pointer;
         }
@@ -299,5 +302,9 @@
 .topMobile{
     position: fixed;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+    box-shadow: 0px 0px 18px -2px rgba(0,0,0,0.8);
+    -webkit-box-shadow: 0px 0px 18px -2px rgba(0,0,0,0.8);
+    -moz-box-shadow: 0px 0px 18px -2px rgba(0,0,0,0.8);
 }
