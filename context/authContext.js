@@ -37,7 +37,6 @@ export const AuthProvider = ({ children }) => {
     setCookie('token', token , 7);
     setIsLoggedIn(true);
     router.push('/');
-    window.location.reload();
   };
 
   return (

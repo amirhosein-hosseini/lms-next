@@ -1,3 +1,4 @@
+"use client"
 import axios from "axios";
 import { getCookie } from "../auth";
 import { apiKey, prefix, url } from "../domain";

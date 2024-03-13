@@ -43,7 +43,7 @@ const LoginPage = () => {
         if(response.data.status == "login"){
           signIn(response?.data?.data?.token);
         }else{
-          toast.error(response?.data?.message)
+          console.log(response?.data?.message)
         }
       })
       .catch((error) => {

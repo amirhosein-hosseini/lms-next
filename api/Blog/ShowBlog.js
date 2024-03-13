@@ -1,3 +1,4 @@
+"use client"
 import axios from "axios";
 import { apiKey, prefix, url } from "../domain";
 
